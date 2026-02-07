@@ -2,8 +2,7 @@ using UnityEngine;
 
 public class Position : MonoBehaviour
 {
-    Position connectedPosXP; // connected position on positive x axis
-    Position connectedPosXN;
-    Position connectedPosZP;
-    Position connectedPosZN;
+    public int X;
+    public int Z;
+    public Vector3 position;
 }
