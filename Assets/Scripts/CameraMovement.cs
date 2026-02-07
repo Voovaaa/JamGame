@@ -20,8 +20,8 @@ public class CameraMovement : MonoBehaviour
     {
         positions = new List<List<GameObject>>();
         positions.Add(new List<GameObject> { null, null, null, null });
-        positions.Add(new List<GameObject> { null, posX1Z1, posX2Z1, null });
-        positions.Add(new List<GameObject> { null, posX1Z2, posX2Z2, null });
+        positions.Add(new List<GameObject> { null, posX1Z1, posX1Z2, null });
+        positions.Add(new List<GameObject> { null, posX2Z1, posX2Z2, null });
         positions.Add(new List<GameObject> { null, null, null, null });
         currentPosition = posX1Z1;
         transform.position = currentPosition.transform.position;
@@ -32,28 +32,37 @@ public class CameraMovement : MonoBehaviour
     {
         //Debug.Log(transform.rotation.eulerAngles);
         if (inputActions.FindAction("Move").WasPressedThisFrame()) // W
-        {
+        {   
+            /*
+            Debug.Log(positions[0][1]);
             Debug.Log(indexesInPosList.Item1);
             Debug.Log(indexesInPosList.Item2);
             Debug.Log(transform.rotation.eulerAngles);
+            Debug.Log(transform.rotation.eulerAngles.y);
+            Debug.Log(transform.rotation.eulerAngles.y == 0.0f);
+            Debug.Log(transform.rotation.eulerAngles.y == 90.0f);
+            Debug.Log(transform.rotation.eulerAngles.y == 180.0f);
+            Debug.Log(transform.rotation.eulerAngles.y == 270.0f);
+            Debug.Log(positions[indexesInPosList.Item1 + 1][indexesInPosList.Item2] != null);
+            */
             indexesInPosList = (currentPosition.GetComponent<Position>().X, currentPosition.GetComponent<Position>().Z);
-            if (transform.rotation.eulerAngles.y == 0 &&
-                positions[indexesInPosList.Item1 - 1][indexesInPosList.Item2] != null)
+            if (transform.rotation.eulerAngles.y == 0.0f &&
+                positions[indexesInPosList.Item1 - 1][indexesInPosList.Item2] != null) //UP
             {
                 changePosition(positions[indexesInPosList.Item1 - 1][indexesInPosList.Item2].GetComponent<Position>());
             }
-            else if (transform.rotation.eulerAngles.y == 90 &&
-                positions[indexesInPosList.Item1][indexesInPosList.Item2].GetComponent<Position>() != null)
+            else if (transform.rotation.eulerAngles.y == 90.0f &&
+                positions[indexesInPosList.Item1][indexesInPosList.Item2 + 1] != null) //RIGHT
             {
                 changePosition(positions[indexesInPosList.Item1][indexesInPosList.Item2 + 1].GetComponent<Position>());
             }
-            else if (transform.rotation.eulerAngles.y == 180 &&
-                    positions[indexesInPosList.Item1 + 1][indexesInPosList.Item2].GetComponent<Position>() != null)
+            else if (transform.rotation.eulerAngles.y == 180.0f &&
+                    positions[indexesInPosList.Item1 + 1][indexesInPosList.Item2] != null) //DOWN
             {
-                changePosition(positions[indexesInPosList.Item1 - 1][indexesInPosList.Item2].GetComponent<Position>());
+                changePosition(positions[indexesInPosList.Item1 + 1][indexesInPosList.Item2].GetComponent<Position>());
             }
-            else if (transform.rotation.eulerAngles.y == 270 &&
-                positions[indexesInPosList.Item1][indexesInPosList.Item2 - 1].GetComponent<Position>() != null)
+            else if (transform.rotation.eulerAngles.y == 270.0f &&
+                positions[indexesInPosList.Item1][indexesInPosList.Item2 - 1] != null) //LEFT
             {
                 changePosition(positions[indexesInPosList.Item1][indexesInPosList.Item2 - 1].GetComponent<Position>());
             }
