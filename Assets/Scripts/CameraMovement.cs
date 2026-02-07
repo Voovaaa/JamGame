@@ -2,6 +2,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
+namespace JamGame
+{
 public class CameraMovement : MonoBehaviour
 {
     public GameObject currentPosition;
@@ -15,6 +17,8 @@ public class CameraMovement : MonoBehaviour
     public InputActionAsset inputActions;
 
     public bool updatePosCommand;
+
+    public Options options;
 
     private void Start()
     {
@@ -30,6 +34,10 @@ public class CameraMovement : MonoBehaviour
 
     private void Update()
     {
+        if (inputActions.FindAction("Menu").WasPressedThisFrame()) // W
+        {
+            this.options.Activate();
+        }
         //Debug.Log(transform.rotation.eulerAngles);
         if (inputActions.FindAction("Move").WasPressedThisFrame()) // W
         {   
@@ -87,4 +95,5 @@ public class CameraMovement : MonoBehaviour
         transform.position = newPos.transform.position;
         indexesInPosList = (newPos.X, newPos.Z);
     }
+}
 }
