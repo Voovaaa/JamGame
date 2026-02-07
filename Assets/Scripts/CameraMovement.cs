@@ -14,7 +14,12 @@ public class CameraMovement : MonoBehaviour
 
     public InputActionAsset inputActions;
 
-    public bool updatePosCommand;
+    public static bool canMove;
+
+    private void Awake()
+    {
+        canMove = true;
+    }
 
     private void Start()
     {
@@ -30,21 +35,10 @@ public class CameraMovement : MonoBehaviour
 
     private void Update()
     {
-        //Debug.Log(transform.rotation.eulerAngles);
+        if (!canMove) return;
+
         if (inputActions.FindAction("Move").WasPressedThisFrame()) // W
-        {   
-            /*
-            Debug.Log(positions[0][1]);
-            Debug.Log(indexesInPosList.Item1);
-            Debug.Log(indexesInPosList.Item2);
-            Debug.Log(transform.rotation.eulerAngles);
-            Debug.Log(transform.rotation.eulerAngles.y);
-            Debug.Log(transform.rotation.eulerAngles.y == 0.0f);
-            Debug.Log(transform.rotation.eulerAngles.y == 90.0f);
-            Debug.Log(transform.rotation.eulerAngles.y == 180.0f);
-            Debug.Log(transform.rotation.eulerAngles.y == 270.0f);
-            Debug.Log(positions[indexesInPosList.Item1 + 1][indexesInPosList.Item2] != null);
-            */
+        {
             indexesInPosList = (currentPosition.GetComponent<Position>().X, currentPosition.GetComponent<Position>().Z);
             if (transform.rotation.eulerAngles.y == 0.0f &&
                 positions[indexesInPosList.Item1 - 1][indexesInPosList.Item2] != null) //UP
@@ -67,18 +61,13 @@ public class CameraMovement : MonoBehaviour
                 changePosition(positions[indexesInPosList.Item1][indexesInPosList.Item2 - 1].GetComponent<Position>());
             }
         }
-        else if (inputActions.FindAction("Rotate left").WasPressedThisFrame())
+        else if (inputActions.FindAction("Rotate left").WasPressedThisFrame()) // A
         {
             transform.Rotate(0, -90f, 0);
         }
-        else if (inputActions.FindAction("Rotate right").WasPressedThisFrame())
+        else if (inputActions.FindAction("Rotate right").WasPressedThisFrame()) // D
         {
             transform.Rotate(0, 90f, 0);
-        }
-        if (updatePosCommand)
-        {
-            updatePosCommand = false;
-            changePosition(currentPosition.GetComponent<Position>());
         }
     }
     void changePosition(Position newPos)
