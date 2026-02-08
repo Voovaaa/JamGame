@@ -11,8 +11,6 @@ public class Interact : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(inputActions.FindAction("Interact").WasPressedThisFrame());
-        Debug.Log(CameraMovement.canMove);
         if (inputActions.FindAction("Interact").WasPressedThisFrame() && CameraMovement.canMove)
         {
             interactables = GetComponent<CameraMovement>().currentPosition.GetComponent<Position>().interactables;

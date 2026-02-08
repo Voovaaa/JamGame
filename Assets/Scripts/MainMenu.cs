@@ -1,9 +1,6 @@
 using UnityEngine;
 
-namespace JamGame
-{
-   
-    public class MainMenu : MonoBehaviour
+public class MainMenu : MonoBehaviour
     {
         public Game game;
         public Options options;
@@ -34,4 +31,4 @@ namespace JamGame
         }
     }
  
-}
+

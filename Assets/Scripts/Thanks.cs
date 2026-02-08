@@ -1,8 +1,6 @@
 using UnityEngine;
 
-namespace JamGame
-{
-   
+
     public class Thanks : MonoBehaviour
     {
         public Splash splash;
@@ -16,4 +14,3 @@ namespace JamGame
         }
     }
  
-}

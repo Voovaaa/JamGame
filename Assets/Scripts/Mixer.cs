@@ -2,8 +2,7 @@ using System.Collections;
 using UnityEngine;
 
 
-namespace JamGame
-{
+
 public class Mixer : MonoBehaviour
 {
     public AudioSource[] sources;
@@ -34,4 +33,4 @@ public class Mixer : MonoBehaviour
         }
     }
 }
-}
+

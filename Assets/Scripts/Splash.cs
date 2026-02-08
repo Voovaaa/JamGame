@@ -1,8 +1,6 @@
 using UnityEngine;
 
-namespace JamGame
-{
-   
+ 
     public class Splash : MonoBehaviour
     {
         public MainMenu mainMenu;
@@ -27,4 +25,3 @@ namespace JamGame
         }
     }
  
-}

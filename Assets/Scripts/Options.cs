@@ -1,9 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace JamGame
-{
-    public class Options : MonoBehaviour
+public class Options : MonoBehaviour
     {
         public Mixer mixer;
         public SoundEffects se;
@@ -35,4 +33,3 @@ namespace JamGame
             this.gameObject.SetActive(false);
         }
     }
-}

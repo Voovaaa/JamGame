@@ -1,7 +1,5 @@
 using UnityEngine;
 
-namespace JamGame
-{
 
 public class SoundEffects : MonoBehaviour
 {
@@ -49,4 +47,4 @@ public class SoundEffects : MonoBehaviour
     }
 
 }
-}
+

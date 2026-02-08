@@ -1,9 +1,6 @@
 using UnityEngine;
 
-namespace JamGame
-{
-   
-    public class Game : MonoBehaviour
+public class Game : MonoBehaviour
     {
         public bool playing = false;
 
@@ -28,4 +25,3 @@ namespace JamGame
         }
     }
  
-}
