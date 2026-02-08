@@ -12,16 +12,11 @@ public class DialogueSystem : MonoBehaviour
     public float ReplicsDelay;
     private void Start()
     {
-        replics = new List<string>();
-        replics.Add("hi");
-        replics.Add("hi2");
         textArea = transform.Find("dialogue text").GetComponent<TMP_Text>();
-        CameraMovement.canMove = false;
-        startDialogue();
-
     }
     public void startDialogue()
     {
+        CameraMovement.canMove = false;
         textArea.enabled = true;
         currentReplicIndex = 0;
         iteration();
